@@ -1,0 +1,11 @@
+# first cache seqdiag
+
+seqdiag {
+
+  user => nuster [label = "GET request", return = "contents"] {
+    nuster => openresty [label = "GET request", return = "contents"] {
+      openresty => origin_server [label = "GET request", return = "contents"];
+    }
+  }
+
+}

@@ -1,0 +1,5 @@
+# target fqdn cache
+
+seqdiag {
+  pagespeed_insights => nuster [label = "GET request", return = "cache contents"];
+}
