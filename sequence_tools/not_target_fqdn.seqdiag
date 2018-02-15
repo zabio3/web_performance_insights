@@ -1,0 +1,5 @@
+# not target fqdn
+
+seqdiag {
+  pagespeed_insights => other_server [label = "GET request", return = "contents"];
+}

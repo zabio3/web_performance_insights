@@ -1,0 +1,11 @@
+# target fqdn no cache
+
+seqdiag {
+
+  pagespeed_insights => nuster [label = "GET request", return = "no cache contents"] {
+    nuster => openresty [label = "GET request", return = "no cache contents"] {
+      openresty => origin_server [label = "GET request", return = "no cache contents"];
+    }
+  }
+
+}
