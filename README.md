@@ -40,4 +40,5 @@ WEBコンテンツの検証用リポジトリ
 
  - [Openrestyについて](openresty/README.md)
  - [シーケンス図について](sequence_tools/README.md)
+ - [検証メモ](verify.md)
 
