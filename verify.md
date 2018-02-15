@@ -15,7 +15,7 @@ goでネットワークのレスポンスヘッダーのパースを行う
  
 ## コンテンツ圧縮について
 
- - brotriでのキャッシュ
+ - [brotriでのキャッシュ](https://github.com/google/ngx_brotli)
     - varyヘッダー付与忘れずに
     - zstandardとかどうなんだろう比較
  - gzip static(zopfliのため)
