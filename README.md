@@ -41,7 +41,7 @@ WEBコンテンツの検証用リポジトリ
 
 ## 各README.md
 
- - [Openrestyについて](openresty/README.md)
+ - [Openrestyについて](Dockerfiles/openresty/README.md)
  - [シーケンス図について](sequence_tools/README.md)
  - [検証メモ](verify.md)
 
