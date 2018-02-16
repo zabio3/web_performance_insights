@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  nuster_for_cache:
+    hostname: nuster_for_cache
+    container_name: nuster_for_cache
+    ports:
+      - 8081:80
+    restart: "no"
+    build:
+      context: .
+      dockerfile: Dockerfiles/nuster_for_cache
+  openresty_proxy:
+    hostname: openresty_proxy
+    container_name: openresty_proxy
+    ports:
+      - 8082:80
+    restart: "no"
+    build:
+      context: .
+      dockerfile: Dockerfiles/openresty_proxy
