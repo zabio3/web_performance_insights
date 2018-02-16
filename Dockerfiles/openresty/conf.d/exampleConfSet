@@ -1,6 +1,6 @@
 server {
   listen       80;
-  server_name  www.sample12345.com;
+  server_name  ngrok_address;
   access_log  /usr/local/openresty/nginx/logs/80_www.sample12345.com.log;
 
   location / {
