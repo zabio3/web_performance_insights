@@ -38,6 +38,26 @@ WEBコンテンツの検証用リポジトリ
 
 ![対象外FQDNコンテンツ](sequence_tools/images/not_target_fqdn.svg.png)
 
+## 利用方法
+
+ - プロキシサーバ (Openresty) の設定
+ 
+#### プロキシサーバに新規conf生成
+
+ - 事前にngrokにアドレスを生成しておく(プロキシサーバを外部に公開する場合。キャッシュサーバを前段に利用したい場合は、キャッシュサーバのアドレスを第二引数に設定する)
+ 
+```
+sh bin/create_fqdn_conf.sh <target_fqdn> <front_address>
+```
+
+#### プロキシサーバのconfを削除
+
+ - プロキシサーバのconf削除（論理削除）
+ 
+```
+sh bin/delete_fqdn_conf.sh <target_fqdn>
+```
+
 
 ## 各README.md
 
