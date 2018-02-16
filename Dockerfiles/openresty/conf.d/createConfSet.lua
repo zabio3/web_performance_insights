@@ -6,9 +6,10 @@ else
 
 io.popen('sed -e s/www.sample12345.com/'..ngx.var.host..'/g /etc/nginx/conf.d/exampleConfSet > /etc/nginx/conf.d/'..ngx.var.host..'.conf','w');
 
+io.popen('sed -i -e s/ngrok_address/'..ngx.var.arg_ngrok_address..'/g /etc/nginx/conf.d/'..ngx.var.host..'.conf','w');
+
 io.popen('sudo /usr/local/openresty/bin/openresty -s reload');
 
--- ngx.say('/opt/nginx/conf/conf.d/'..ngx.var.host..'.conf');
 ngx.say(200);
 
 end
