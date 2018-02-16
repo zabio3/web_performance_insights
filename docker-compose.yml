@@ -18,4 +18,4 @@ services:
     restart: "no"
     build:
       context: .
-      dockerfile: Dockerfiles/openresty_proxy
+      dockerfile: Dockerfiles/openresty/openresty_proxy
