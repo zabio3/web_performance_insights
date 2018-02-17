@@ -40,7 +40,7 @@ WEBコンテンツの検証用リポジトリ
 
 ## 利用方法
 
- - プロキシサーバ (Openresty) の設定
+### プロキシサーバ (Openresty) の設定
  
 #### プロキシサーバに新規conf生成
 
@@ -57,6 +57,9 @@ sh bin/create_fqdn_conf.sh <target_fqdn> <front_address>
 ```
 sh bin/delete_fqdn_conf.sh <target_fqdn>
 ```
+
+### キャッシュサーバ (Nuster) の設定
+
 
 
 ## 各README.md

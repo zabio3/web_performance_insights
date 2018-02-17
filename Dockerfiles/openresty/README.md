@@ -33,6 +33,13 @@ docker-compose up -d openresty_proxy
 chmod 777 /etc/nginx/conf.d/./
 ```
 
+##### ログ確認
+
+```docker
+docker-compose logs -f openresty_proxy
+```
+
+
 ## メモ
  - luaでconfファイルを自動生成させるには、対象ディレクトリへの書き込み権限が必要
  - luaでの変数一覧
