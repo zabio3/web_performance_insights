@@ -14,6 +14,13 @@
 
 
 
+##### キャッシュの削除
+
+```docker
+curl -XPURGE http://localhost:8080
+```
+
+
 ## メモ
  - [macOSでのVolume指定について（絶対パスで指定しなければならない）](https://docs.docker.com/docker-for-mac/osxfs/#namespaces)
 

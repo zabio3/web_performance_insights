@@ -1,4 +1,4 @@
-FROM nuster:1.7.9
+FROM nuster/nuster:1.7.9
 
-COPY nuster.cfg /etc/nuster/nuster.cfg
+COPY Dockerfiles/nuster/nuster.cfg /etc/nuster/nuster.cfg
 
