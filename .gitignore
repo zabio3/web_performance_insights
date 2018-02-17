@@ -1,2 +1,10 @@
 .idea/
 *.svg
+
+# ansible
+cloud_deploy/playbook/inventory/hosts
+
+# terraform
+cloud_deploy/terraform/.*
+cloud_deploy/terraform/terraform.tfstate*
+
