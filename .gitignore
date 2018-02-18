@@ -8,3 +8,5 @@ cloud_deploy/playbook/inventory/hosts
 cloud_deploy/terraform/.*
 cloud_deploy/terraform/terraform.tfstate*
 
+*.retry
+authorized_keys
