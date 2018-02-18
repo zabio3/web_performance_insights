@@ -41,6 +41,11 @@ WEBコンテンツの検証用リポジトリ
 ## 利用方法
 
 ### プロキシサーバ (Openresty) の設定
+
+```docker
+docker-compose build openresty_proxy
+docker-compose up -d openresty_proxy
+```
  
 #### プロキシサーバに新規conf生成
 
@@ -60,11 +65,15 @@ sh bin/delete_fqdn_conf.sh <target_fqdn>
 
 ### キャッシュサーバ (Nuster) の設定
 
-
+```docker
+docker-compose build nuster_cache
+docker-compose up -d nuster_cache
+```
 
 ## 各README.md
 
  - [Openrestyについて](Dockerfiles/openresty/README.md)
+ - [nusterについて](Dockerfiles/nuster/README.md)
  - [シーケンス図について](sequence_tools/README.md)
  - [検証メモ](verify.md)
 
