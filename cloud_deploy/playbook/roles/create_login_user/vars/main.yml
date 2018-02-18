@@ -1,0 +1,5 @@
+users:
+ - name: zabio
+   password: hogehoge
+   groups:
+     - wheel

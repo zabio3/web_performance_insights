@@ -1,0 +1,3 @@
+del_users:
+ - name: ec2-user
+

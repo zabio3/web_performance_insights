@@ -1,0 +1,10 @@
+---
+
+# 今回は、削除対象のホームディレクトリごと削除するものとする
+- name: ユーザを削除
+  become: True
+  user: >
+    name={{ item.name }}
+    state=absent
+    remove=yes
+  with_items:  '{{ del_users }}'
