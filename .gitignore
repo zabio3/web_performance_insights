@@ -2,11 +2,11 @@
 *.svg
 
 # ansible
-cloud_deploy/playbook/inventory/hosts
+playbook/inventory/hosts
 
 # terraform
-cloud_deploy/terraform/.*
-cloud_deploy/terraform/terraform.tfstate*
+terraform/.*
+terraform/terraform.tfstate*
 
 *.retry
 authorized_keys
