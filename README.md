@@ -11,7 +11,10 @@ WEBコンテンツの検証用リポジトリ
     
  - 対象コンテンツの圧縮を行う際には、「[httrack](https://www.httrack.com/)」
    もしくは、「wget -r -np <対象URL>」
- 
+   
+## バージョン関連
+ - centos7系, amazon linux 動作確認済
+
 ## 構成
 
 ### シーケンス図
@@ -39,6 +42,24 @@ WEBコンテンツの検証用リポジトリ
 ![対象外FQDNコンテンツ](sequence_tools/images/not_target_fqdn.svg.png)
 
 ## 利用方法
+
+## AWS上でのデプロイ(AWSを利用するならば)
+
+ - 事前にaws-cliにcredentialの情報を登録しておく。configuration.tfに、インスタンスタイプ, subnet id, ami id, keyなどをセット。
+
+```
+cd terraform
+terraform applay
+```
+
+### サーバ単位での設定
+
+
+```
+cd playbook
+ansible-playbook build.yml
+```
+
 
 ### プロキシサーバ (Openresty) の設定
 
