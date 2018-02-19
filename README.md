@@ -89,6 +89,16 @@ docker-compose build nuster_cache
 docker-compose up -d nuster_cache
 ```
 
+## マルチブラウザテスト
+
+ - [browserstack利用](https://www.browserstack.com/automate/node)
+
+```
+npm install -g selenium-webdriver
+
+```
+
+
 ## 各README.md
 
  - [Openrestyについて](Dockerfiles/openresty/README.md)

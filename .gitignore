@@ -10,3 +10,5 @@ terraform/aws/terraform.tfstate*
 
 *.retry
 authorized_keys
+
+browserstack/run-simple-global-site-test.js
