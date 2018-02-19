@@ -5,8 +5,8 @@
 playbook/inventory/hosts
 
 # terraform
-terraform/.*
-terraform/terraform.tfstate*
+terraform/aws/.*
+terraform/aws/terraform.tfstate*
 
 *.retry
 authorized_keys
