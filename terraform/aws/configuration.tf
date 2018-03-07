@@ -10,6 +10,7 @@ resource "aws_instance" "ec2" {
   vpc_security_group_ids = [
     #"sg-96d478ef"
     "sg-ef7f0696"
+    #"sg-89bffaf0"
   ]
   # subnet_id = "subnet-199d4e42"
   subnet_id = "subnet-79dc930f"
@@ -24,7 +25,7 @@ resource "aws_instance" "ec2" {
     volume_size = "8"
   }
   tags = {
-    Name = "pagespeed_verify_server"
+    Name = "hogehoge"
   }
 }
 
