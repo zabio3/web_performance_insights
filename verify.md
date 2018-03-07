@@ -28,3 +28,6 @@ goでネットワークのレスポンスヘッダーのパースを行う
     - nginxの性能6倍らしい（fastlyも利用している）
 
 ## 参考
+
+ - [psi](https://github.com/addyosmani/psi)
+    - コマンドラインツールからpagespeed insightsが計測可能
