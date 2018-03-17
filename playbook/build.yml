@@ -1,8 +1,8 @@
 ---
- -
-   hosts: aws_verify_server
-   roles:
-     - create_login_user
-     # - delete_users
-     - set_timezone
-     - verify_setup
+- name: Setup AWS verification server
+  hosts: aws_verify_server
+  roles:
+    - create_login_user
+    # - delete_users
+    - set_timezone
+    - verify_setup

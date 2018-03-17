@@ -1,31 +1,39 @@
 ---
-
-- name: users exist
-  become: True
-  user: name={{ item.name}} state=present password={{ item.password }} groups={{ item.groups }}
-  with_items:
-    - "{{ users }}"
+- name: Create users
+  become: true
+  ansible.builtin.user:
+    name: "{{ item.name }}"
+    state: present
+    password: "{{ item.password }}"
+    groups: "{{ item.groups }}"
+  with_items: "{{ users }}"
   tags: users
 
-- name: ~/.ssh for users exsit
-  become: True
-  file: path="/home/{{item.name}}/.ssh" state=directory owner={{item.name}} group={{item.name}} mode=0700
-  with_items:
-    - "{{ users }}"
+- name: Create .ssh directory for users
+  become: true
+  ansible.builtin.file:
+    path: "/home/{{ item.name }}/.ssh"
+    state: directory
+    owner: "{{ item.name }}"
+    group: "{{ item.name }}"
+    mode: "0700"
+  with_items: "{{ users }}"
   tags: users
 
-- name: authorized keys is deployed
-  become: True
-  copy: src="authorized_keys" dest="/home/{{item.name}}/.ssh/zabio_private_keys" owner={{item.name}} group={{item.name}} mode=0600
-  with_items:
-    - "{{ users }}"
+- name: Deploy authorized keys
+  become: true
+  ansible.builtin.copy:
+    src: authorized_keys
+    dest: "/home/{{ item.name }}/.ssh/authorized_keys"
+    owner: "{{ item.name }}"
+    group: "{{ item.name }}"
+    mode: "0600"
+  with_items: "{{ users }}"
   tags: users
 
-- name: give sudo admiral level
-  become: True
-  lineinfile:
+- name: Configure passwordless sudo for wheel group
+  become: true
+  ansible.builtin.lineinfile:
     dest: /etc/sudoers
-    backup: yes
-    line: '%wheel ALL=(ALL) NOPASSWD: ALL'
-
-# ec2ユーザーを削除する処理を入れたい
+    backup: true
+    line: "%wheel ALL=(ALL) NOPASSWD: ALL"

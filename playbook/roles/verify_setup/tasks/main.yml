@@ -1,14 +1,11 @@
 ---
+- name: Check kernel version
+  ansible.builtin.fail:
+    msg: "Kernel {{ ansible_kernel }} is not supported."
+  when: ansible_kernel is version('3.10', '<')
 
-- name: Check kernel version.
-  fail: msg="Kernel {{ ansible_kernel }} is not supported."
-  when: "ansible_kernel | version_compare('3.10', '<')"
-
-- name: docker install (amazon)
-  become: True
-  yum: name=docker state=present
-
-#- name: install docker-compse
-#  get_url: url={{ download_url }} sha256sum={{ csum }}
-#          dest=/user/local/src/
-#  register: downloaded_tarball
+- name: Install Docker (Amazon Linux)
+  become: true
+  ansible.builtin.yum:
+    name: docker
+    state: present

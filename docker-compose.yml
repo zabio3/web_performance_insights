@@ -8,11 +8,10 @@ services:
       - 8081:8080
     restart: "no"
     volumes:
-      # user path
-      - ~/project/study/web_performance_insights/Dockerfiles/nuster/nuster.cfg:/etc/nuster/nuster.cfg:ro
+      - ./Dockerfiles/nuster/nuster.cfg:/etc/nuster/nuster.cfg:ro
     build:
       context: .
-      dockerfile: Dockerfiles/nuster/nuster_cache
+      dockerfile: Dockerfiles/nuster/Dockerfile
   openresty_proxy:
     hostname: openresty_proxy
     container_name: openresty_proxy
@@ -21,4 +20,4 @@ services:
     restart: "no"
     build:
       context: .
-      dockerfile: Dockerfiles/openresty/openresty_proxy
+      dockerfile: Dockerfiles/openresty/Dockerfile
