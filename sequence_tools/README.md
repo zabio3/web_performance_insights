@@ -1,51 +1,51 @@
 nwdiag, seqdiag
 ===
 
-ネットワーク図、シーケンス図を生成してくれるツール
+Tools for generating network diagrams and sequence diagrams.
 
-### ネットワーク図生成 (nwdiag)
+### Network Diagram Generation (nwdiag)
 
-一度、SVGに吐き出してから、PNGに変換した方が綺麗になるため
+Export to SVG first, then convert to PNG for better quality.
 
-##### install 
+##### Install
 
 ```
 pip install nwdiag
 ```
 
-###### SVGへ変換
+###### Convert to SVG
 
 ```
-nwdiag -Tsvg configuration_diagram.nwdiag 
+nwdiag -Tsvg configuration_diagram.nwdiag
 ```
 
-###### PNGへ変換
+###### Convert to PNG
 
 ```
-qlmanage -t -s 1000 -o . configuration_diagram.svg 
+qlmanage -t -s 1000 -o . configuration_diagram.svg
 ```
 
-## シーケンス図の生成 (seqdiag)
+## Sequence Diagram Generation (seqdiag)
 
-##### install 
+##### Install
 
 ```
 pip install seqdiag
 ```
 
-###### SVGへ変換
+###### Convert to SVG
 
 ```
-seqdiag -Tsvg first_cache.seqdiag 
+seqdiag -Tsvg first_cache.seqdiag
 ```
 
-###### PNGへ変換
+###### Convert to PNG
 
 ```
-qlmanage -t -s 1000 -o . first_cache.seqdiag.svg 
+qlmanage -t -s 1000 -o . first_cache.seqdiag.svg
 ```
 
-## 参考
+## References
 
- - [ネットワーク図生成ツール nwdiag](http://blockdiag.com/ja/nwdiag/index.html)
+ - [Network diagram tool nwdiag](http://blockdiag.com/ja/nwdiag/index.html)
  - [WebUI](https://github.com/dataich/LiveDiag)

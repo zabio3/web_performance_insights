@@ -1,28 +1,26 @@
 [Nuster](https://github.com/jiangwenyuan/nuster)
 ===
 
-## 概要
+## Overview
 
+HAProxy-based caching proxy server.
 
-## 詳細
+## Details
 
-##### 設定ファイルの読み直し
+##### Reload Configuration
 
 ```
-/usr/local/sbin/haproxy -f ./nuster.cfg 
+/usr/local/sbin/haproxy -f ./nuster.cfg
 ```
 
-
-
-##### キャッシュの削除
+##### Clear Cache
 
 ```docker
 curl -XPURGE http://localhost:8080
 ```
 
+## Notes
+ - [macOS Volume Specification (must use absolute path)](https://docs.docker.com/docker-for-mac/osxfs/#namespaces)
 
-## メモ
- - [macOSでのVolume指定について（絶対パスで指定しなければならない）](https://docs.docker.com/docker-for-mac/osxfs/#namespaces)
-
-## 参考
- - [nuster入門](https://qiita.com/kbe/items/d366d7a387de3d18fb96)
+## References
+ - [Nuster Introduction](https://qiita.com/kbe/items/d366d7a387de3d18fb96)

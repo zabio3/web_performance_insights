@@ -1,7 +1,7 @@
 delete_users
 =========
 
-ユーザーのディレクトリとユーザーをひたすら削除
+Delete user directories and users
 
 Requirements
 ------------

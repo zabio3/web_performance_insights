@@ -1,108 +1,102 @@
 web_performance_insights
 ===
 
-WEBコンテンツの検証用リポジトリ
+Repository for web content performance verification
 
-## 概要
+## Overview
 
- - 測定は、「[pagespeed insights](https://developers.google.com/speed/pagespeed/insights/?hl=ja)」で行い、WEBコンテンツパフォーマンスを測定し検証するための環境。
-    - 「[ngrok](https://ngrok.com/)」を使い、ローカル環境をインターネット上に公開することで測定可能
-    - 内部の向け先を書き換える必要があるため、「対象FQDN」を「ngrokで発行されたFQDN」にopenrestyを使って動的に書き換える
-    
- - 対象コンテンツの圧縮を行う際には、「[httrack](https://www.httrack.com/)」
-   もしくは、「wget -r -np <対象URL>」
-   
-## バージョン関連
- - centos7系, amazon linux 動作確認済
+ - Measure web content performance using [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/).
+    - Use [ngrok](https://ngrok.com/) to expose local environment to the internet for measurement
+    - Dynamically rewrite target FQDN to ngrok-issued FQDN using OpenResty
 
-## 構成
+ - For content compression: [httrack](https://www.httrack.com/) or `wget -r -np <target_url>`
 
-#### ファーストキャッシュ時
+## Version
+ - Tested on CentOS 7 and Amazon Linux
 
- - 事前にキャッシュサーバにキャッシュさせる必要があるため
+## Architecture
 
-![ファーストキャッシュ時](sequence_tools/images/first_cache.svg.png)
+#### First Cache
 
-#### 測定時
+ - Pre-cache content on the cache server
 
- - 対象FQDNのtopページにrequestで、各々の紐づくrequestの流れのシーケンス図
+![First Cache](sequence_tools/images/first_cache.svg.png)
 
-##### 対象FQDNキャッシュコンテンツ
+#### Measurement
 
-![対象FQDNキャッシュコンテンツ](sequence_tools/images/target_fqdn_cache.svg.png)
+ - Sequence diagram of request flow when accessing the target FQDN top page
 
-##### 対象FQDN未キャッシュコンテンツ
+##### Cached Content (Target FQDN)
 
-![対象FQDN未キャッシュコンテンツ](sequence_tools/images/target_fqdn_no_cache.svg.png)
+![Cached Content](sequence_tools/images/target_fqdn_cache.svg.png)
 
-##### 対象外FQDNコンテンツ
+##### Uncached Content (Target FQDN)
 
-![対象外FQDNコンテンツ](sequence_tools/images/not_target_fqdn.svg.png)
+![Uncached Content](sequence_tools/images/target_fqdn_no_cache.svg.png)
 
-## 利用方法
+##### Non-Target FQDN Content
 
-### AWS上でのデプロイ
+![Non-Target FQDN Content](sequence_tools/images/not_target_fqdn.svg.png)
 
- - 事前にaws-cliにcredentialの情報を登録しておく。configuration.tfに、インスタンスタイプ, subnet id, ami id, keyなどをセット。
+## Usage
+
+### AWS Deployment
+
+ - Register AWS CLI credentials beforehand. Set instance type, subnet id, ami id, key, etc. in configuration.tf.
 
 ```
 cd terraform
-terraform applay
+terraform apply
 ```
 
-### サーバ単位での設定
-
+### Server Setup
 
 ```
 cd playbook
 ansible-playbook build.yml
 ```
 
-
-### プロキシサーバ (Openresty) の設定
+### Proxy Server (OpenResty) Setup
 
 ```docker
 docker-compose build openresty_proxy
 docker-compose up -d openresty_proxy
 ```
- 
-#### プロキシサーバに新規conf生成
 
- - 事前にngrokにアドレスを生成しておく(プロキシサーバを外部に公開する場合。キャッシュサーバを前段に利用したい場合は、キャッシュサーバのアドレスを第二引数に設定する)
- 
+#### Generate New Proxy Config
+
+ - Generate ngrok address beforehand (for exposing proxy server externally. Set cache server address as second argument if using cache server in front)
+
 ```
 sh bin/create_fqdn_conf.sh <target_fqdn> <front_address>
 ```
 
-#### プロキシサーバのconfを削除
+#### Delete Proxy Config
 
- - プロキシサーバのconf削除（論理削除）
- 
+ - Delete proxy server config (soft delete)
+
 ```
 sh bin/delete_fqdn_conf.sh <target_fqdn>
 ```
 
-### キャッシュサーバ (Nuster) の設定
+### Cache Server (Nuster) Setup
 
 ```docker
 docker-compose build nuster_cache
 docker-compose up -d nuster_cache
 ```
 
-## マルチブラウザテスト
+## Multi-Browser Testing
 
- - [browserstack利用](https://www.browserstack.com/automate/node)
+ - [Using BrowserStack](https://www.browserstack.com/automate/node)
 
 ```
 npm install -g selenium-webdriver
-
 ```
 
+## Additional Documentation
 
-## 各README.md
-
- - [Openrestyについて](Dockerfiles/openresty/README.md)
- - [nusterについて](Dockerfiles/nuster/README.md)
- - [シーケンス図について](sequence_tools/README.md)
- - [検証メモ](verify.md)
-
+ - [OpenResty](Dockerfiles/openresty/README.md)
+ - [Nuster](Dockerfiles/nuster/README.md)
+ - [Sequence Diagrams](sequence_tools/README.md)
+ - [Verification Notes](verify.md)

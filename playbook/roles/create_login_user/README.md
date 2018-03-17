@@ -1,8 +1,7 @@
 create_login_user
 =========
 
-sshログイン可能なユーザーを追加
-zabio
+Add SSH login capable user
 
 Requirements
 ------------

@@ -1,5 +1,5 @@
 users:
- - name: zabio
-   password: hogehoge
+ - name: "{{ admin_user }}"
+   password: "{{ vault_user_password }}"
    groups:
      - wheel

@@ -1,13 +1,11 @@
 playbook
 ===
 
-## メモ
-
-
+## Notes
 
 ```docker
 systemctl start docker.service
 ```
 
- - [Docker compose install](https://docs.docker.com/compose/install/)
- - [ngrok install](https://ngrok.com/download)
+ - [Docker Compose Install](https://docs.docker.com/compose/install/)
+ - [ngrok Install](https://ngrok.com/download)

@@ -1,33 +1,33 @@
-検証メモ
+Verification Notes
 ===
 
-## 解析
+## Analysis
 
-goでネットワークのレスポンスヘッダーのパースを行う
- - 対象FQDNのみパース
- - 何に時間を取られているのか？（dnsルックアップ、レンダブロックのチェック）
- - cache (etag, cache-control, expiretimeの長さ)
- - gzip, zopfli(deflateより効率よい)
- - js, css圧縮
- - 画像系のチェック
- - document.writeがあるかチェック
- などなど
- 
-## コンテンツ圧縮について
+Parse network response headers with Go
+ - Parse only target FQDN
+ - What is consuming time? (DNS lookup, render blocking check)
+ - Cache (etag, cache-control, expire duration)
+ - gzip, zopfli (more efficient than deflate)
+ - js, css minification
+ - Image optimization check
+ - Check for document.write usage
+ - etc.
 
- - [brotriでのキャッシュ](https://github.com/google/ngx_brotli)
-    - varyヘッダー付与忘れずに
-    - zstandardとかどうなんだろう比較
- - gzip static(zopfliのため)
-    - cacheさせておく(キャッシュ用のサーバ追加)
- - image/jpegが圧縮されているかで、負荷がかかるので確認してチューニング
- 
-## プロキシ、キャッシュサーバについて
+## Content Compression
+
+ - [Brotli caching with ngx_brotli](https://github.com/google/ngx_brotli)
+    - Don't forget to add Vary header
+    - Compare with zstandard
+ - gzip static (for zopfli)
+    - Cache on dedicated cache server
+ - Check if image/jpeg is compressed to tune performance
+
+## Proxy/Cache Server
 
  - [H2O - an optimized HTTP server with support for HTTP/1.x and HTTP/2](https://github.com/h2o/h2o/)
-    - nginxの性能6倍らしい（fastlyも利用している）
+    - Reportedly 6x faster than nginx (used by Fastly)
 
-## 参考
+## References
 
  - [psi](https://github.com/addyosmani/psi)
-    - コマンドラインツールからpagespeed insightsが計測可能
+    - Command-line tool for PageSpeed Insights measurement

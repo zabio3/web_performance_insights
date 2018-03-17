@@ -1,13 +1,11 @@
 aws_deploy
 ====
 
-## 概要
+## Overview
 
-aws環境にterraformを使ってサーバをデプロイさせるコード
+Deploy servers to AWS using Terraform.
 
-ami-d1cc47b7は、base-image
-
-## 実行
+## Execution
 
 ```
 terraform plan
